@@ -19,27 +19,27 @@ namespace think\webworker\support\think;
 class Middleware extends \think\Middleware
 {
     /**
-     * 默认执行队列
+     * 全局执行队列
      * @var array
      */
-    protected $defaultQueue;
+    protected $baseQueue;
     
     /**
-     * 初始化默认参数
+     * 初始化默认数据
      * @access public
      * @return $this
      */
-    public function reinitialize()
+    public function initDefaultData()
     {
-        // 未初始化默认执行队列
-        if(is_null($this->defaultQueue)){
-            // 初始化默认执行队列
-            $this->defaultQueue = $this->queue;
+        // 未初始化全局执行队列
+        if(is_null($this->baseQueue)){
+            // 初始化全局执行队列
+            $this->baseQueue = $this->queue;
             // 返回
             return $this;
         }
-        // 设置当前执行队列为默认执行队列
-        $this->queue = $this->defaultQueue;
+        // 设置当前执行队列为全局执行队列
+        $this->queue = $this->baseQueue;
         // 返回
         return $this;
     }

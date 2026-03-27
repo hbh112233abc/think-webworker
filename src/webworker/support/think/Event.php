@@ -19,63 +19,63 @@ namespace think\webworker\support\think;
 class Event extends \think\Event
 {
     /**
-     * 默认监听者
+     * 全局监听者
      * @var array
      */
-    protected $defaultListener;
+    protected $baseListener;
 
     /**
-     * 默认事件别名
+     * 全局事件别名
      * @var array
      */
-    protected $defaultBind;
+    protected $baseBind;
 
     /**
-     * 重新初始化默认配置参数
+     * 初始化默认数据
      * @access public
      * @return $this
      */
-    public function reinitialize()
+    public function initDefaultData()
     {
         return $this->initListener()->initBind();
     }
 
 	/**
-	 * 初始化默认监听者
+	 * 初始化全局监听者
 	 * @access protected
 	 * @return $this
 	 */
 	protected function initListener()
 	{
-        // 如果未初始化默认监听者
-        if(is_null($this->defaultListener)){
-            // 初始化默认监听者
-            $this->defaultListener = $this->listener;
+        // 如果未初始化全局监听者
+        if(is_null($this->baseListener)){
+            // 初始化全局监听者
+            $this->baseListener = $this->listener;
             // 返回
             return $this;
         }
-        // 设置当前监听者为默认监听者
-        $this->listener = $this->defaultListener;
+        // 设置当前监听者为全局监听者
+        $this->listener = $this->baseListener;
         // 返回
         return $this;
     }
 
 	/**
-	 * 初始化默认事件别名
+	 * 初始化全局事件别名
 	 * @access protected
 	 * @return $this
 	 */
 	protected function initBind()
 	{
-        // 如果未初始化默认事件别名
-        if(is_null($this->defaultBind)){
-            // 初始化默认事件别名
-            $this->defaultBind = $this->bind;
+        // 如果未初始化全局事件别名
+        if(is_null($this->baseBind)){
+            // 初始化全局事件别名
+            $this->baseBind = $this->bind;
             // 返回
             return $this;
         }
-        // 设置当前事件别名为默认事件别名
-        $this->bind = $this->defaultBind;
+        // 设置当前事件别名为全局事件别名
+        $this->bind = $this->baseBind;
         // 返回
         return $this;
     }

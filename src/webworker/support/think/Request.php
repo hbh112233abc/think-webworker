@@ -29,14 +29,14 @@ class Request extends \think\Request
     protected $workerRequest;
 
     /**
-     * 获取当前根域名
+     * 初始化请求数据
      * @access public
      * @param App $app
 	 * @param TcpConnection $connection
 	 * @param WorkerRequest $workerRequest
      * @return void
      */
-    public function reinitialize(App $app, TcpConnection $connection, WorkerRequest $workerRequest): void
+    public function initData(App $app, TcpConnection $connection, WorkerRequest $workerRequest): void
     {
         global $_GET, $_POST, $_COOKIE, $_REQUEST, $_FILES, $_SERVER;
         // 清除以前的请求数据

@@ -19,11 +19,11 @@ namespace think\webworker\support\think;
 class Http extends \think\Http
 {
     /**
-     * 初始化默认参数
+     * 初始化默认数据
      * @access public
      * @return $this
      */
-    public function reinitialize()
+    public function initDefaultData()
     {
         // 初始化应用名称
         $this->name = null;

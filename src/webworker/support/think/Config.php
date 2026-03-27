@@ -19,27 +19,27 @@ namespace think\webworker\support\think;
 class Config extends \think\Config
 {
     /**
-     * 默认配置参数
+     * 全局配置参数
      * @var array
      */
-    protected $defaultConfig;
+    protected $baseConfig;
 
     /**
-     * 重新初始化默认配置参数
+     * 初始化默认数据
      * @access public
      * @return $this
      */
-    public function reinitialize()
+    public function initDefaultData()
     {
-        // 如果未初始化默认配置参数
-        if(is_null($this->defaultConfig)){
-            // 设置默认配置
-            $this->defaultConfig = $this->config;
+        // 如果未初始化全局配置参数
+        if(is_null($this->baseConfig)){
+            // 设置全局配置
+            $this->baseConfig = $this->config;
             // 返回
             return $this;
         }
-        // 设置配置为默认配置参数
-        $this->config = $this->defaultConfig;
+        // 设置配置为基础配置参数
+        $this->config = $this->baseConfig;
         // 返回
         return $this;
     }
